@@ -56,7 +56,7 @@ public class FileReaderGUI extends JFrame {
      centerPanel.add(button);
      //Add the panel to the top of the frame
 
-     JScrollPane scrollPane = new JScrollPane(list);
+     //JScrollPane scrollPane = new JScrollPane(list);
      //scrollPane.setBounds(10, 70, 150, 150);
      //bottomPanel.add(scrollPane);
 
@@ -65,8 +65,9 @@ public class FileReaderGUI extends JFrame {
              frame.setLocation(500,500);
              frame.add( topPanel , BorderLayout.NORTH);
              frame.add(centerPanel, BorderLayout.CENTER);
-             frame.add(scrollPane, BorderLayout.SOUTH);
-             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+             //frame.add(scrollPane, BorderLayout.SOUTH);
+             frame.add(list, BorderLayout.SOUTH);
+             //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              frame.setVisible(true);
 
 
