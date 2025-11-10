@@ -27,8 +27,8 @@ public class FileReaderGUI extends JFrame {
      // Set the title of the frame
       file = new File("resources/countries.txt");
 
-     frame = new JFrame("FileReader GUI" );
-     frame.setLayout(new BorderLayout());
+     //frame = new JFrame("FileReader GUI" );
+     setLayout(new BorderLayout());
      //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      topPanel= new JPanel();
      centerPanel = new JPanel();
@@ -60,15 +60,15 @@ public class FileReaderGUI extends JFrame {
      //scrollPane.setBounds(10, 70, 150, 150);
      //bottomPanel.add(scrollPane);
 
-
-             frame.setSize(400, 400);
-             frame.setLocation(500,500);
-             frame.add( topPanel , BorderLayout.NORTH);
-             frame.add(centerPanel, BorderLayout.CENTER);
+            //frame.setSize(400,400); --> not necessary. JFrame is being extended n
+             setSize(400, 400);
+             setLocation(500,500);
+             add( topPanel , BorderLayout.NORTH);
+             add(centerPanel, BorderLayout.CENTER);
              //frame.add(scrollPane, BorderLayout.SOUTH);
-             frame.add(list, BorderLayout.SOUTH);
+             add(list, BorderLayout.SOUTH);
              //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             frame.setVisible(true);
+             setVisible(true);
 
 
  }//end of constructor
