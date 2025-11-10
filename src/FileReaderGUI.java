@@ -1,77 +1,93 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+/**
+ * A GUI application that reads a file and displays its contents in a JList.
+ @author stephan knappstein A01208242
+ @version 1.0
+ */
 public class FileReaderGUI extends JFrame {
 
-    // Declare the components
+    /** The label to display instructions. */
     private JLabel label;
+    /** The button to trigger file reading. */
     private JButton button;
+    /** The list to display the file contents. */
     private JList<String> list;
+    /** The file to be read. */
     private File file;
+    /** The main frame of the application. */
     private JFrame frame;
+    /** The top panel containing the label. */
     private JPanel topPanel;
+    /** The center panel containing the button. */
     private JPanel centerPanel;
+    /** The bottom panel. */
     private JPanel bottomPanel;
 
 
- public FileReaderGUI() {
-     // Set the title of the frame
-      file = new File("resources/countries.txt");
-
-     //frame = new JFrame("FileReader GUI" );
-     setLayout(new BorderLayout());
-     //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     topPanel= new JPanel();
-     centerPanel = new JPanel();
-     //topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-     // Create the label
-     label = new JLabel("Click the button to display the file contents");
-     //label.setBounds(10, 10, 200, 20);
-
-     // Create the button
-     button = new JButton("Display File Contents");
-    // button.setBounds(10, 40, 120, 20);
-     // button.addActionListener
-     button.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            // readFile(file);
-             String[] countries = readFile(file).toArray(new String[0]);
-             list.setListData(countries);
-
-         }});
-     list = new JList<String>();
-    // list.setBounds(100, 70, 150, 150);
-
-     //frame.add(topPanel);
-     topPanel.add(label);
-     centerPanel.add(button);
-     //Add the panel to the top of the frame
-
-     //JScrollPane scrollPane = new JScrollPane(list);
-     //scrollPane.setBounds(10, 70, 150, 150);
-     //bottomPanel.add(scrollPane);
-
-            //frame.setSize(400,400); --> not necessary. JFrame is being extended n
-             setSize(400, 400);
-             setLocation(500,500);
-             add( topPanel , BorderLayout.NORTH);
-             add(centerPanel, BorderLayout.CENTER);
-             //frame.add(scrollPane, BorderLayout.SOUTH);
-             add(list, BorderLayout.SOUTH);
-             //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             setVisible(true);
+    /**
+     * Constructs the FileReaderGUI, initializing the GUI components and setting up the frame.
+     */
+    public FileReaderGUI() {
+        // Set the title of the frame
+        file = new File("resources/countries.txt");
 
 
- }//end of constructor
+        setLayout(new BorderLayout());
+
+        topPanel= new JPanel();
+        centerPanel = new JPanel();
+
+        // Create the label
+        label = new JLabel("Click the button to display the file contents");
+
+
+        // Create the button
+        button = new JButton("Display File Contents");
+
+        // button.addActionListener
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                String[] countries = readFile(file).toArray(new String[0]);
+                list.setListData(countries);
+
+            }});
+        list = new JList<String>();
+
+
+
+        topPanel.add(label);
+        centerPanel.add(button);
+        //Add the panel to the top of the frame
+
+
+
+        //frame.setSize(400,400); --> not necessary. JFrame is being extended n
+        setSize(400, 400);
+        setLocation(500,500);
+        add( topPanel , BorderLayout.NORTH);
+        add(centerPanel, BorderLayout.CENTER);
+
+        add(list, BorderLayout.SOUTH);
+        setVisible(true);
+
+
+    }//end of constructor
+
+    /**
+     * Reads the contents of a file and returns them as a list of strings.
+     *
+     * @param file The file to read.
+     * @return A list of strings, where each string is a line from the file.
+     */
     public List<String>  readFile(File file ) {
         List<String> stringList = new ArrayList<>();
         if (!file.exists()) {
@@ -86,18 +102,23 @@ public class FileReaderGUI extends JFrame {
                 stringList.add(fileScanner.nextLine());
             }
         }catch(FileNotFoundException e){
-                e.printStackTrace();
-            }
+            e.printStackTrace();
+        }
         finally{
-                if (fileScanner != null) {
-                    fileScanner.close();
-                }
+            if (fileScanner != null) {
+                fileScanner.close();
             }
+        }
 
 
 
-   return stringList;  }// end of readFile
+        return stringList;  }// end of readFile
 
+    /**
+     * The main method to run the application.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         // Create a new instance of the SimpleGUI class
         FileReaderGUI gui = new FileReaderGUI();
