@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -33,7 +35,7 @@ public class FileReaderGUI extends JFrame {
 
 
     /**
-     * Constructs the FileReaderGUI, initializing the GUI components and setting up the frame.
+     * Constructs the GUI.FileReaderGUI, initializing the GUI components and setting up the frame.
      */
     public FileReaderGUI() {
         // Set the title of the frame
